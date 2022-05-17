@@ -7,7 +7,7 @@ const addOrder = async (request, response) => {
   console.log(order);
 
 
-  await order.save((error, user) => {
+  await order.save((error, order) => {
     if(error){
       response.status(500).json({ error: error.message });
       console.log(error.message)
