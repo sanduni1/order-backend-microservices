@@ -96,6 +96,7 @@ jobs:
           # ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
           # ./kustomize build . | kubectl apply -f -
           kubectl delete -f ./deployment.yaml && kubectl apply -f ./deployment.yaml
+          kubectl annotate svcems-app-service kubectl.kubernetes.io/last-applied-configuration-
           kubectl apply -f ./service.yaml
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
